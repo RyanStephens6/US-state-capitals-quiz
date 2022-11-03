@@ -1,3 +1,44 @@
+:root {
+    --buttonColor: rgb(67, 0, 67);
+    --hoverColor: purple;
+}
+
 .hidden {
     display: none;
+}
+
+header ul{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-right: 30px
+}
+
+main {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+main p {
+    text-align: center;
+    padding-left: 250px;
+    padding-right: 250px;
+}
+
+#start-button {
+    background-color: var(--buttonColor);
+    color: white;
+    padding: 10px 30px 10px 30px;
+    border-radius: 5px;
+    outline: 0;
+    font-size: 30px;
+}
+
+#start-button:hover {
+    cursor: pointer;
+    background-color: var(--hoverColor)
 }

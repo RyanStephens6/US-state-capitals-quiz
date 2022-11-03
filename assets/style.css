@@ -71,3 +71,9 @@ main p {
     cursor: pointer;
     background-color: var(--hoverColor);
 }
+
+#end-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

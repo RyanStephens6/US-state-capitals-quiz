@@ -7,6 +7,8 @@ var button1Element = document.getElementById("btn1");
 var button2Element = document.getElementById("btn2");
 var button3Element = document.getElementById("btn3");
 var button4Element = document.getElementById("btn4");
+var endPageElement = document.getElementById("end-page");
+var scoreDisplay = document.getElementById("score-display");
 var score = 0;
 var timer = 120;
 var currentQuestion = 0;
@@ -63,7 +65,8 @@ function checkAnswer(button) {
 function renderEndPage() {
     mainElement.style="display:none";
     quizElement.style="display:none";
-    
+    endPageElement.style="display:flex";
+    scoreDisplay.textContent = "Your score: " + score;
 }
 
 startButton.addEventListener("click", startQuiz);

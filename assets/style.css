@@ -42,3 +42,32 @@ main p {
     cursor: pointer;
     background-color: var(--hoverColor)
 }
+
+#quiz {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-left: 200px;
+    padding-right: 200px;
+}
+
+#quiz ul {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    gap: 5px;
+    padding: 0px 1000px;
+}
+
+.buttonStyle {
+    background-color: var(--buttonColor);
+    color: white;
+    padding: 10px 50px;
+    border-radius: 10px;
+    font-size: 24px;
+}
+
+.buttonStyle:hover {
+    cursor: pointer;
+    background-color: var(--hoverColor);
+}

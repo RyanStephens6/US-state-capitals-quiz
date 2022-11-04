@@ -13,6 +13,7 @@ var submitButton = document.getElementById("submit-button");
 var highScoresElement = document.getElementById("high-scores-page");
 var returnHomeButton = document.getElementById("return-home");
 var timerElement = document.getElementById("timer");
+var highScoresList = document.getElementById("high-scores-list");
 var timer = 120;
 var score = 0;
 var currentQuestion = 0;
@@ -92,8 +93,20 @@ function renderHighScoresPage(event) {
     highScoresElement.style="display:flex";
     let userInitials = document.getElementById("score-input").value;
     localStorage.scores += userInitials + " " + score +",";
-    let highScores = localStorage.getItem("scores");
-    console.log(highScores);
+    let highScoresStored = localStorage.getItem("scores");
+    let highScores = highScoresStored.split(',');
+    while(highScoresList.firstChild) {
+        highScoresList.removeChild(highScoresList.firstChild);
+    }
+    for(let i = 0; i < highScores.length; i++) {
+        console.log(highScoresList);
+        let listItem = document.createElement('li');
+        console.log(listItem);
+        listItem.textContent = highScores[i];
+        console.log(listItem);
+        highScoresList.appendChild(listItem);
+        console.log(highScoresList);
+    }
 }
 
 //renders the main page by hiding all other page's elements and setting the main element to display: flex. Additionally it resets the users score, time, and current question
@@ -109,6 +122,7 @@ function renderHomePage(event) {
     endTimer = false;
 }
 
+//Timer for quiz, if the timer hits 0, the quiz will end. If the quiz is finished, the timer will disappear
 function setTimer() {
     var timerInterval = setInterval(function() {
     timer--;

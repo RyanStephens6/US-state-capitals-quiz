@@ -12,10 +12,12 @@ var scoreDisplay = document.getElementById("score-display");
 var submitButton = document.getElementById("submit-button");
 var highScoresElement = document.getElementById("high-scores-page");
 var returnHomeButton = document.getElementById("return-home");
-var score = 0;
+var timerElement = document.getElementById("timer");
 var timer = 120;
+var score = 0;
 var currentQuestion = 0;
-localStorage.scores = "";
+localStorage.setItem("scores","");
+var endTimer = false;
 
 //Generates question objects that contain the question, 4 options, and the correct answer
 const question1 = {question: "Why is the sky blue", options: ["wrong", "right", "wrong", "wrong"], answer: "right"}
@@ -30,6 +32,7 @@ function startQuiz() {
     mainElement.style="display:none";
     renderQuestion(questionList[0]);
     quizElement.style="display:flex";
+    setTimer();
 }
 
 //Renders a question by adding text from a question object to the text of the question element and button elements
@@ -67,6 +70,7 @@ function checkAnswer(button) {
 
 //Renders the end page of the quiz by hiding the quiz page and main page, but revealing the end page in display: flex
 function renderEndPage() {
+    endTimer = true;
     mainElement.style="display:none";
     quizElement.style="display:none";
     endPageElement.style="display:flex";
@@ -81,7 +85,7 @@ function renderHighScoresPage(event) {
     highScoresElement.style="display:flex";
     let userInitials = document.getElementById("score-input").value;
     localStorage.scores += userInitials + " " + score +",";
-    let highScores = localStorage.getItem(scores);
+    let highScores = localStorage.getItem("scores");
     console.log(highScores);
 }
 
@@ -95,6 +99,25 @@ function renderHomePage(event) {
     score = 0;
     timer = 120;
     currentQuestion=0;
+    endTimer = false;
+}
+
+function setTimer() {
+    var timerInterval = setInterval(function() {
+    timer--;
+    timerElement.textContent = "Time left: " + timer;
+
+    if(timer <= 0) {
+        timerElement.textContent = "";
+        renderEndPage();
+        clearInterval(timerInterval);
+    }
+    else if(endTimer == true) {
+        timerElement.textContent = "";
+        clearInterval(timerInterval);
+    }
+
+  }, 1000);
 }
 
 //Event listeners for all buttons in the webpage

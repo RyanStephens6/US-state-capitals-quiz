@@ -17,16 +17,13 @@ header ul{
 
 main {
     display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    padding-left: 200px;
-    padding-right: 200px;
+    flex-direction: column;
+    align-items: center;
 }
 
 main p {
     text-align: center;
-    padding-left: 250px;
-    padding-right: 250px;
+    max-width: 500px;
 }
 
 #start-button {
@@ -47,13 +44,11 @@ main p {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    padding-left: 200px;
-    padding-right: 200px;
 }
 
 #quiz ul {
     display: flex;
-    justify-content: center;
+    align-items: stretch;
     flex-direction: column;
     gap: 5px;
     padding: 0px 1000px;
@@ -76,4 +71,39 @@ main p {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+
+#high-scores-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#high-scores-list {
+    list-style: none;
+    padding-right: 35px;
+}
+
+#view-high-scores {
+    background-color: var(--buttonColor);
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+}
+
+#view-high-scores:hover {
+    cursor: pointer;
+    background-color: var(--hoverColor);
+}
+
+#return-home {
+    background-color: var(--buttonColor);
+    color: white;
+    padding: 5px 10px 5px 10px;
+    border-radius: 5px;
+}
+
+#return-home:hover {
+    cursor: pointer;
+    background-color: var(--hoverColor);
 }

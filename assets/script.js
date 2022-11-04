@@ -10,6 +10,7 @@ var button4Element = document.getElementById("btn4");
 var endPageElement = document.getElementById("end-page");
 var scoreDisplay = document.getElementById("score-display");
 var submitButton = document.getElementById("submit-button");
+var highScoresButton = document.getElementById("view-high-scores");
 var highScoresElement = document.getElementById("high-scores-page");
 var returnHomeButton = document.getElementById("return-home");
 var timerElement = document.getElementById("timer");
@@ -85,6 +86,7 @@ function renderEndPage() {
     scoreDisplay.textContent = "Your score: " + score + "/10";
 }
 
+//Loads the high score page using local storage. Players scores are stored in the local storage, first it clears the li's from previous renders, then re-renders the scores from the local storage
 function renderHighScoresPage(event) {
     event.preventDefault();
     mainElement.style="display:none";
@@ -149,3 +151,4 @@ button3Element.addEventListener("click", function() {checkAnswer(button3Element)
 button4Element.addEventListener("click", function() {checkAnswer(button4Element)});
 submitButton.addEventListener("click", renderHighScoresPage);
 returnHomeButton.addEventListener("click", renderHomePage);
+highScoresButton.addEventListener("click", renderHighScoresPage);

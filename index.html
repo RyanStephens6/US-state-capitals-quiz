@@ -38,9 +38,14 @@
             <h2 id="score-display"></h2>
             <p>Please enter your initials to submit your score</p>
             <form>
-                <input type="text" id="score-input">
-                <input type="submit" value="Submit">
+                <input type="text" placeholder="Initials" id="score-input">
+                <input type="submit" id="submit-button" value="Submit">
             </form>
+        </div>
+        <div id="high-scores-page" style="display:none">
+            <h1>High scores</h1>
+            <ul></ul>
+            <button type="button" id="return-home">Return home</button>
         </div>
         <script src="./assets/script.js"></script>
     </body>

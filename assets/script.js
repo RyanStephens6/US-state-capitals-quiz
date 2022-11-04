@@ -9,9 +9,13 @@ var button3Element = document.getElementById("btn3");
 var button4Element = document.getElementById("btn4");
 var endPageElement = document.getElementById("end-page");
 var scoreDisplay = document.getElementById("score-display");
+var submitButton = document.getElementById("submit-button");
+var highScoresElement = document.getElementById("high-scores-page");
+var returnHomeButton = document.getElementById("return-home");
 var score = 0;
 var timer = 120;
 var currentQuestion = 0;
+localStorage.scores = "";
 
 //Generates question objects that contain the question, 4 options, and the correct answer
 const question1 = {question: "Why is the sky blue", options: ["wrong", "right", "wrong", "wrong"], answer: "right"}
@@ -39,7 +43,6 @@ function renderQuestion(question) {
 
 //Checks if the button the user selected is the button to the correct answer. If it is the correct button, the user will gain a point and the next question in the question list will be rendered. If incorrect, the user will lose time and the next question will be rendered
 function checkAnswer(button) {
-    console.log(button.textContent);
     if(button.textContent === questionList[currentQuestion].answer) {
         score++;
         currentQuestion++;
@@ -62,6 +65,7 @@ function checkAnswer(button) {
     }
 }
 
+//Renders the end page of the quiz by hiding the quiz page and main page, but revealing the end page in display: flex
 function renderEndPage() {
     mainElement.style="display:none";
     quizElement.style="display:none";
@@ -69,8 +73,35 @@ function renderEndPage() {
     scoreDisplay.textContent = "Your score: " + score;
 }
 
+function renderHighScoresPage(event) {
+    event.preventDefault();
+    mainElement.style="display:none";
+    quizElement.style="display:none";
+    endPageElement.style="display:none";
+    highScoresElement.style="display:flex";
+    let userInitials = document.getElementById("score-input").value;
+    localStorage.scores += userInitials + " " + score +",";
+    let highScores = localStorage.getItem(scores);
+    console.log(highScores);
+}
+
+//renders the main page by hiding all other page's elements and setting the main element to display: flex. Additionally it resets the users score, time, and current question
+function renderHomePage(event) {
+    event.preventDefault();
+    mainElement.style="display:flex";
+    quizElement.style="display:none";
+    endPageElement.style="display:none";
+    highScoresElement.style="display:none";
+    score = 0;
+    timer = 120;
+    currentQuestion=0;
+}
+
+//Event listeners for all buttons in the webpage
 startButton.addEventListener("click", startQuiz);
 button1Element.addEventListener("click", function() {checkAnswer(button1Element)});
 button2Element.addEventListener("click", function() {checkAnswer(button2Element)});
 button3Element.addEventListener("click", function() {checkAnswer(button3Element)});
 button4Element.addEventListener("click", function() {checkAnswer(button4Element)});
+submitButton.addEventListener("click", renderHighScoresPage);
+returnHomeButton.addEventListener("click", renderHomePage);

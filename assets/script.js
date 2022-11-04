@@ -20,12 +20,19 @@ localStorage.setItem("scores","");
 var endTimer = false;
 
 //Generates question objects that contain the question, 4 options, and the correct answer
-const question1 = {question: "Why is the sky blue", options: ["wrong", "right", "wrong", "wrong"], answer: "right"}
-const question2 = {question: "Why is the sky blue", options: ["wrong", "wrong", "wrong", "right"], answer: "right"}
-const question3 = {question: "Why is the sky blue", options: ["wrong", "wrong", "wrong", "right"], answer: "right"}
+const question1 = {question: "What is the capital of Colorado", options: ["Fort Collins", "Denver", "Colorado Springs", "Pueblo"], answer: "Denver"}
+const question2 = {question: "What is the capital of California", options: ["Los Angeles", "San Diego", "Sacramento", "San Francisco"], answer: "Sacramento"}
+const question3 = {question: "What is the capital of Texas", options: ["Austin", "Houston", "San Antonio", "Dallas"], answer: "Austin"}
+const question4 = {question: "What is the capital of New York", options: ["Riverhead", "New York", "Albany", "Hempstead"], answer: "Albany"}
+const question5 = {question: "What is the capital of Florida", options: ["Tampa", "Jacksonville", "Tallahassee", "Orlando"], answer: "Tallahassee"}
+const question6 = {question: "What is the capital of Pennsylvania", options: ["Scranton", "Harrisburg", "Philadelphia", "Pittsburg"], answer: "Harrisburg"}
+const question7 = {question: "What is the capital of Illinois", options: ["Chicago", "Rockford", "Joliet", "Springfield"], answer: "Springfield"}
+const question8 = {question: "What is the capital of Ohio", options: ["Columbus", "Cincinnati", "Toledo", "Cleveland"], answer: "Columbus"}
+const question9 = {question: "What is the capital of Georgia", options: ["Augusta", "Atlanta", "Columbus", "Macon"], answer: "Atlanta"}
+const question10 = {question: "What is the capital of North Carolina", options: ["Fayetteville", "Raleigh", "Fort Bragg", "Charlotte"], answer: "Raleigh"}
 
 //Creates list of question objects
-var questionList = [question1, question2, question3];
+var questionList = [question1, question2, question3, question4, question5, question6, question7, question8, question9, question10];
 
 //Starts the quiz by hiding the homepage and rendering the first question
 function startQuiz() {
@@ -74,7 +81,7 @@ function renderEndPage() {
     mainElement.style="display:none";
     quizElement.style="display:none";
     endPageElement.style="display:flex";
-    scoreDisplay.textContent = "Your score: " + score;
+    scoreDisplay.textContent = "Your score: " + score + "/10";
 }
 
 function renderHighScoresPage(event) {
